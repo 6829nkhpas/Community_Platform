@@ -154,17 +154,24 @@ comm-app/
    cd comm-app
    ```
 
-2. **Install Backend Dependencies**
+2. **Install all dependencies**
 
    ```bash
-   cd backend
-   npm install
+   # Install all dependencies (frontend + backend)
+   npm run install:all
+   
+   # Or install separately
+   cd backend && npm install
+   cd ../frontend && npm install
    ```
 
-3. **Install Frontend Dependencies**
+3. **Set up environment variables**
+
    ```bash
-   cd ../frontend
-   npm install
+   # Run the deployment setup script
+   npm run setup-deployment
+   
+   # Or manually create backend/.env file with your credentials
    ```
 
 ### Environment Configuration
@@ -233,6 +240,50 @@ comm-app/
 3. **Access the Application**
    - Frontend: http://localhost:3000
    - Backend API: http://localhost:5000/api
+
+### Production Deployment
+
+For detailed deployment instructions, see [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
+
+**Quick Deployment Steps:**
+
+1. **Deploy Backend to Render/Heroku**
+   - Use the `render.yaml` file for Render deployment
+   - Set environment variables in your hosting platform
+
+2. **Deploy Frontend to Netlify**
+   - Connect your GitHub repository to Netlify
+   - Configure build settings in `frontend/netlify.toml`
+   - Set environment variables in Netlify dashboard
+
+3. **Set up external services**
+   - MongoDB Atlas for database
+   - Cloudinary for file uploads
+
+**Available Scripts:**
+```bash
+# Development
+npm run dev                    # Start both frontend and backend
+npm run dev:frontend          # Start frontend only
+npm run dev:backend           # Start backend only
+
+# Build
+npm run build                 # Build frontend for production
+npm run build:frontend        # Build frontend only
+npm run build:backend         # Build backend only
+
+# Deployment
+npm run setup-deployment      # Interactive setup for deployment
+
+# Testing
+npm run test                  # Run all tests
+npm run test:frontend         # Run frontend tests
+npm run test:backend          # Run backend tests
+
+# Linting
+npm run lint                  # Lint all code
+npm run lint:fix              # Fix linting issues
+```
 
 ## 📚 API Documentation
 
