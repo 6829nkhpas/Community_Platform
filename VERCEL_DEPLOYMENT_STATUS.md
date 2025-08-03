@@ -1,10 +1,14 @@
 # Vercel Deployment Status - FIXED ✅
 
-## Issue Resolved
+## Issues Resolved
 
-**Error**: `If 'rewrites', 'redirects', 'headers', 'cleanUrls' or 'trailingSlash' are used, then 'routes' cannot be present.`
+**Error 1**: `If 'rewrites', 'redirects', 'headers', 'cleanUrls' or 'trailingSlash' are used, then 'routes' cannot be present.`
 
-## Solution Applied
+**Error 2**: `Header at index 1 has invalid 'source' pattern "/(.*\.(jpg|jpeg|png|gif|svg|webp|ico))".`
+
+## Solutions Applied
+
+### Solution 1: Updated Vercel Configuration Syntax
 
 Updated `frontend/vercel.json` to use the newer Vercel syntax:
 
@@ -32,9 +36,40 @@ Updated `frontend/vercel.json` to use the newer Vercel syntax:
       "destination": "/index.html"
     }
   ],
-  "headers": [...]
+  "headers": [
+    {
+      "source": "/static/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        }
+      ]
+    }
+  ]
 }
 ```
+
+### Solution 2: Fixed Invalid Regex Pattern
+
+Removed the problematic image file pattern that had invalid regex syntax.
 
 ## Changes Made
 
@@ -49,8 +84,13 @@ Updated `frontend/vercel.json` to use the newer Vercel syntax:
    - `dest` → `destination`
 
 3. **Simplified routing**
+
    - Single catch-all route for React Router
    - Removed redundant static file routes (Vercel handles these automatically)
+
+4. **Fixed regex patterns**
+   - Removed invalid image file pattern that was causing regex errors
+   - Kept essential security and cache headers
 
 ## Current Configuration
 
