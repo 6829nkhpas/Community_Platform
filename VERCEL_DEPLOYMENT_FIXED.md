@@ -23,17 +23,17 @@ All Vercel deployment issues have been resolved! Your project is now ready for s
 
 ## 📁 Current Configuration Files
 
-### `frontend/vercel.json` (Simplified & Working)
+### `vercel.json` (Root-level Configuration)
 
 ```json
 {
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build"
+        "distDir": "frontend/build"
       }
     }
   ],
@@ -59,15 +59,15 @@ All Vercel deployment issues have been resolved! Your project is now ready for s
 
 1. Go to [vercel.com](https://vercel.com)
 2. Import your GitHub repository
-3. Set Root Directory to `frontend`
-4. Set Build Command to `npm run build`
-5. Set Output Directory to `build`
+3. **No need to set Root Directory** (using root-level vercel.json)
+4. **No need to set Build Command** (configured in vercel.json)
+5. **No need to set Output Directory** (configured in vercel.json)
 6. Click "Deploy"
 
 ### Option 2: Vercel CLI
 
 ```bash
-cd frontend
+# Deploy from root directory
 vercel
 ```
 

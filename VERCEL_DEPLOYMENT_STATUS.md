@@ -8,6 +8,8 @@
 
 **Error 3**: `JSONParseError: Expected double-quoted property name in JSON at position 1119` - Build failing due to JSON syntax errors in package.json
 
+**Error 4**: `Could not find a required file. Name: index.html` - Vercel couldn't find the index.html file due to incorrect project structure configuration
+
 ## Solutions Applied
 
 ### Solution 1: Updated Vercel Configuration Syntax
@@ -81,6 +83,15 @@ Fixed JSON syntax errors in `frontend/package.json`:
 - Fixed malformed JSON structure
 - Removed empty lines causing parsing issues
 
+### Solution 4: Fixed Project Structure Configuration
+
+Moved Vercel configuration to root level and updated build paths:
+
+- Created root-level `vercel.json`
+- Removed frontend-specific `vercel.json`
+- Updated build configuration to point to `frontend/package.json`
+- Set correct `distDir` to `frontend/build`
+
 ## Changes Made
 
 1. **Replaced `routes` with `rewrites`**
@@ -104,9 +115,15 @@ Fixed JSON syntax errors in `frontend/package.json`:
    - Kept essential security and cache headers
 
 5. **Fixed JSON syntax**
+
    - Corrected package.json syntax errors
    - Removed trailing commas and empty lines
    - Ensured valid JSON structure
+
+6. **Fixed project structure**
+   - Moved Vercel config to root level
+   - Updated build paths to point to frontend directory
+   - Ensured correct file discovery
 
 ## Current Configuration
 
