@@ -108,6 +108,9 @@ backend-env-production.txt
 frontend-env-production.txt
 local-env.txt
 
+# Vercel
+.vercel
+
 # Upload directories
 uploads/
 backend/uploads/

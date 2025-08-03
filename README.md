@@ -243,7 +243,7 @@ comm-app/
 
 ### Production Deployment
 
-For detailed deployment instructions, see [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUIDE.md)
+For detailed deployment instructions, see [VERCEL_DEPLOYMENT_GUIDE.md](./VERCEL_DEPLOYMENT_GUIDE.md)
 
 **Quick Deployment Steps:**
 
@@ -251,10 +251,10 @@ For detailed deployment instructions, see [DEPLOYMENT_GUIDE.md](./DEPLOYMENT_GUI
    - Use the `render.yaml` file for Render deployment
    - Set environment variables in your hosting platform
 
-2. **Deploy Frontend to Netlify**
-   - Connect your GitHub repository to Netlify
-   - Configure build settings in `frontend/netlify.toml`
-   - Set environment variables in Netlify dashboard
+2. **Deploy Frontend to Vercel**
+   - Connect your GitHub repository to Vercel
+   - Configure build settings in `frontend/vercel.json`
+   - Set environment variables in Vercel dashboard
 
 3. **Set up external services**
    - MongoDB Atlas for database

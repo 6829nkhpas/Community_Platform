@@ -59,9 +59,9 @@ const questions = [
   },
   {
     name: 'frontend_url',
-    message: 'Enter your Netlify frontend URL (leave empty for now, update later):',
+    message: 'Enter your Vercel frontend URL (leave empty for now, update later):',
     required: false,
-    placeholder: 'https://your-app-name.netlify.app'
+    placeholder: 'https://your-app-name.vercel.app'
   },
   {
     name: 'backend_url',
@@ -123,7 +123,7 @@ SOCKET_CORS_ORIGIN=${answers.frontend_url || 'https://your-frontend-url.netlify.
 
   // Frontend environment variables
   const frontendEnv = `# Frontend Environment Variables for Production
-# Copy these to your Netlify environment variables
+# Copy these to your Vercel environment variables
 
 REACT_APP_API_URL=${answers.backend_url || 'https://your-backend-url.onrender.com'}
 REACT_APP_SOCKET_URL=${answers.backend_url || 'https://your-backend-url.onrender.com'}
@@ -179,8 +179,8 @@ SOCKET_CORS_ORIGIN=http://localhost:3000
     console.log('   - Create a new Web Service');
     console.log('   - Copy variables from backend-env-production.txt\n');
     
-    console.log('4. Deploy Frontend to Netlify:');
-    console.log('   - Go to https://netlify.com/');
+    console.log('4. Deploy Frontend to Vercel:');
+    console.log('   - Go to https://vercel.com/');
     console.log('   - Connect your GitHub repository');
     console.log('   - Copy variables from frontend-env-production.txt\n');
     
@@ -188,7 +188,7 @@ SOCKET_CORS_ORIGIN=http://localhost:3000
     console.log('   - After deployment, update the URLs in your environment variables');
     console.log('   - Redeploy both services\n');
     
-    console.log('📖 For detailed instructions, see DEPLOYMENT_GUIDE.md');
+    console.log('📖 For detailed instructions, see VERCEL_DEPLOYMENT_GUIDE.md');
     
   } catch (error) {
     console.error('❌ Error generating files:', error.message);
