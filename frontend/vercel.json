@@ -31,6 +31,10 @@
       "dest": "/logo512.png"
     },
     {
+      "src": "/robots.txt",
+      "dest": "/robots.txt"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
@@ -72,4 +76,4 @@
       ]
     }
   ]
-} 
+}

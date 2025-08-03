@@ -5,8 +5,10 @@ echo "=========================================="
 
 # Check if Vercel CLI is installed
 if ! command -v vercel &> /dev/null; then
-    echo "❌ Vercel CLI is not installed. Installing now..."
-    npm install -g vercel
+    echo "❌ Vercel CLI is not installed."
+    echo "Please install it manually with: npm install -g vercel"
+    echo "Or use sudo: sudo npm install -g vercel"
+    exit 1
 fi
 
 # Check if user is logged in to Vercel
@@ -25,7 +27,7 @@ echo "📁 Deploying from frontend directory..."
 
 # Deploy to Vercel
 echo "🚀 Starting deployment..."
-vercel --prod
+vercel --prod --yes
 
 echo ""
 echo "✅ Deployment completed!"
