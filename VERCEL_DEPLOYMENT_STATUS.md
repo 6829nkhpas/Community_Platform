@@ -6,6 +6,8 @@
 
 **Error 2**: `Header at index 1 has invalid 'source' pattern "/(.*\.(jpg|jpeg|png|gif|svg|webp|ico))".`
 
+**Error 3**: `JSONParseError: Expected double-quoted property name in JSON at position 1119` - Build failing due to JSON syntax errors in package.json
+
 ## Solutions Applied
 
 ### Solution 1: Updated Vercel Configuration Syntax
@@ -71,6 +73,14 @@ Updated `frontend/vercel.json` to use the newer Vercel syntax:
 
 Removed the problematic image file pattern that had invalid regex syntax.
 
+### Solution 3: Fixed JSON Syntax Errors
+
+Fixed JSON syntax errors in `frontend/package.json`:
+
+- Removed trailing commas
+- Fixed malformed JSON structure
+- Removed empty lines causing parsing issues
+
 ## Changes Made
 
 1. **Replaced `routes` with `rewrites`**
@@ -89,8 +99,14 @@ Removed the problematic image file pattern that had invalid regex syntax.
    - Removed redundant static file routes (Vercel handles these automatically)
 
 4. **Fixed regex patterns**
+
    - Removed invalid image file pattern that was causing regex errors
    - Kept essential security and cache headers
+
+5. **Fixed JSON syntax**
+   - Corrected package.json syntax errors
+   - Removed trailing commas and empty lines
+   - Ensured valid JSON structure
 
 ## Current Configuration
 
